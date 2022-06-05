@@ -1,0 +1,79 @@
+{
+    "swagger": "2.0",
+    "info" : {
+        "title": "RentalX Documentation",
+        "description": "This is an API for Car Rent",
+        "version": "1.0.0",
+        "contact": {
+            "name": "Subaru Sakaguchi",
+            "email": "subarusakaguchi@yahoo.com.br"
+        }
+    },
+    "paths": {
+        "/categories" : {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Create a Category",
+                "description": "Create a new Category for Cars",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/category"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Category Already Exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Category"],
+                "summary": "List categories",
+                "description": "List all categories in the application",
+                "produces": ["application/json"],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "itens": {
+                                "$ref": "#/definitions/category"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5555/api-docs"
+        }
+    ],
+    "definitions": {
+        "category": {
+            "type": "object",
+            "required": ["name", "description"],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Sedan"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Carro com o porta malas mais amplo"
+                }
+            }
+        }
+    }
+}
