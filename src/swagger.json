@@ -53,6 +53,55 @@
                     }
                 }
             }
+        },
+        "/categories/import": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Create categories from a csv file",
+                "description": "Create new categories based on a csv file, if it already does not exists",
+                "consumes": ["multipart/form-data"],
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "file",
+                        "description": "File to be uploaded, in csv format",
+                        "type": "file",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/specifications": {
+            "post": {
+                "tags": ["Specification"],
+                "summary": "Create a specification",
+                "description": "Create a new specification if it already does not exists",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/specification"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Specification already exists"
+                    }
+                }
+            }
         }
     },
     "servers": [
@@ -72,6 +121,20 @@
                 "description": {
                     "type": "string",
                     "example": "Carro com o porta malas mais amplo"
+                }
+            }
+        },
+        "specification": {
+            "type": "object",
+            "requiered": ["name", "description"],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Câmbio automático"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Carro com sistema de câmbio automático, ou seja, sem uso da embreagem"
                 }
             }
         }
