@@ -1,3 +1,4 @@
+import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { User } from "../../entities/User";
 import { UserRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
 import { CreateUserUseCase } from "./CreateUserUseCase";
@@ -6,12 +7,12 @@ let userRepositoryInMemory: UserRepositoryInMemory;
 let createUserUseCase: CreateUserUseCase;
 
 describe("Create User", () => {
-    beforeAll(() => {
+    beforeEach(() => {
         userRepositoryInMemory = new UserRepositoryInMemory();
         createUserUseCase = new CreateUserUseCase(userRepositoryInMemory);
     });
     it("Should be able to create an user", async () => {
-        const user = {
+        const user: ICreateUserDTO = {
             name: "Subaru Sakaguchi",
             email: "subarusakaguchi@yahoo.com.br",
             password: "123456",
@@ -24,13 +25,9 @@ describe("Create User", () => {
             user.email
         );
 
-        console.log(userCreatedByEmail);
-
         const userCreatedById = await userRepositoryInMemory.findById(
             userCreatedByEmail.id
         );
-
-        console.log(userCreatedById);
 
         expect(userCreatedByEmail).toBeDefined();
         expect(userCreatedByEmail).toHaveProperty("id");

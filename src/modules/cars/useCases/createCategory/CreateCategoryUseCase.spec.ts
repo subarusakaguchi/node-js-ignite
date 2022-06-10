@@ -1,4 +1,5 @@
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
+
 import { CategoryRepositoryInMemory } from "../../repositories/in-memory/CategoryRepositoryInMemory";
 import { CreateCategoryUseCase } from "./CreateCategoryUseCase";
 
@@ -6,7 +7,7 @@ let createCategoryUseCase: CreateCategoryUseCase;
 let categoryRepositoryInMemory: CategoryRepositoryInMemory;
 
 describe("Create Category", () => {
-    beforeAll(() => {
+    beforeEach(() => {
         categoryRepositoryInMemory = new CategoryRepositoryInMemory();
         createCategoryUseCase = new CreateCategoryUseCase(
             categoryRepositoryInMemory

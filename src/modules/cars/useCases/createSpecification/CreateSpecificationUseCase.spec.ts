@@ -1,4 +1,5 @@
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@errors/AppError";
+
 import { Specification } from "../../entities/Specification";
 import { SpecificationRepositoryInMemory } from "../../repositories/in-memory/SpecificationRepositoryInMemory";
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
@@ -7,7 +8,7 @@ let specificationRepository: SpecificationRepositoryInMemory;
 let createSpecificationUseCase: CreateSpecificationUseCase;
 
 describe("Create specification", () => {
-    beforeAll(() => {
+    beforeEach(() => {
         specificationRepository = new SpecificationRepositoryInMemory();
         createSpecificationUseCase = new CreateSpecificationUseCase(
             specificationRepository

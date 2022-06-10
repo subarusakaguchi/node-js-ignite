@@ -8,7 +8,7 @@ let listCategoryUseCase: ListCategoriesUseCase;
 let createCategoryUseCase: CreateCategoryUseCase;
 
 describe("List Categories", () => {
-    beforeAll(() => {
+    beforeEach(() => {
         categoryRepositoryInMemory = new CategoryRepositoryInMemory();
         listCategoryUseCase = new ListCategoriesUseCase(
             categoryRepositoryInMemory
