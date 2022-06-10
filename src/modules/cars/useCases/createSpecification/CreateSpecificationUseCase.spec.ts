@@ -1,6 +1,6 @@
-import { AppError } from "@errors/AppError";
+import { AppError } from "@src/shared/errors/AppError";
 
-import { Specification } from "../../entities/Specification";
+import { Specification } from "../../infra/typeorm/entities/Specification";
 import { SpecificationRepositoryInMemory } from "../../repositories/in-memory/SpecificationRepositoryInMemory";
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 

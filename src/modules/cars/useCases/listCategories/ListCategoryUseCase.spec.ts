@@ -1,4 +1,4 @@
-import { Category } from "../../entities/Category";
+import { Category } from "../../infra/typeorm/entities/Category";
 import { CategoryRepositoryInMemory } from "../../repositories/in-memory/CategoryRepositoryInMemory";
 import { CreateCategoryUseCase } from "../createCategory/CreateCategoryUseCase";
 import { ListCategoriesUseCase } from "./ListCategoriesUseCase";

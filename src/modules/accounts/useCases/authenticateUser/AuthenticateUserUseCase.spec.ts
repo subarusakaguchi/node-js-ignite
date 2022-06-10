@@ -1,6 +1,6 @@
 import { verify } from "jsonwebtoken";
 
-import { AppError } from "@errors/AppError";
+import { AppError } from "@src/shared/errors/AppError";
 
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 import { UserRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
