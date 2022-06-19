@@ -1,38 +1,38 @@
 import { getRepository, Repository } from "typeorm";
 
 import {
-    ICategoryRepository,
-    ICreateCategoryDTO,
+  ICategoryRepository,
+  ICreateCategoryDTO,
 } from "../../../repositories/ICategoryRepository";
 import { Category } from "../entities/Category";
 
 class CategoryRepository implements ICategoryRepository {
-    private repository: Repository<Category>;
+  private repository: Repository<Category>;
 
-    constructor() {
-        this.repository = getRepository(Category);
-    }
+  constructor() {
+    this.repository = getRepository(Category);
+  }
 
-    async create({ name, description }: ICreateCategoryDTO): Promise<void> {
-        const newCategory = this.repository.create({
-            name,
-            description,
-        });
+  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
+    const newCategory = this.repository.create({
+      name,
+      description,
+    });
 
-        await this.repository.save(newCategory);
-    }
+    await this.repository.save(newCategory);
+  }
 
-    async list(): Promise<Category[]> {
-        const allCategories = await this.repository.find();
+  async list(): Promise<Category[]> {
+    const allCategories = await this.repository.find();
 
-        return allCategories;
-    }
+    return allCategories;
+  }
 
-    async findByName(name: string): Promise<Category> {
-        const category = await this.repository.findOne({ name });
+  async findByName(name: string): Promise<Category> {
+    const category = await this.repository.findOne({ name });
 
-        return category;
-    }
+    return category;
+  }
 }
 
 export { CategoryRepository };
