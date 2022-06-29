@@ -1,4 +1,4 @@
-import { AppError } from "@src/shared/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 import { Car } from "../../infra/typeorm/entities/Car";
 import { CarsRepositoryInMemory } from "../../repositories/in-memory/CarsRepositoryInMemory";

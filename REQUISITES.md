@@ -51,5 +51,7 @@
 
 **Requisitos de Negócio (RN)**
 - O Aluguel deve ter duração mínima de 24(vinte e quatro) horas
+- Não deve ser possível cadastrar um novo aluguel para um carro que não exista
+- Não deve ser possível cadastrar um novo aluguel para um usuário que não exista
 - Não deve ser possível cadastrar um novo aluguel caso já exista um em aberto para o mesmo usuário
 - Não deve ser possível cadastrar um novo aluguel caso já exista um em aberto para o mesmo carro

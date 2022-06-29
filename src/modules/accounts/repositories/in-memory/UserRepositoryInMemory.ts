@@ -3,35 +3,35 @@ import { User } from "../../infra/typeorm/entities/User";
 import { IUserRepository } from "../IUserRepository";
 
 class UserRepositoryInMemory implements IUserRepository {
-    users: User[] = [];
+  users: User[] = [];
 
-    async create({
-        name,
-        password,
-        email,
-        driver_license,
-    }: ICreateUserDTO): Promise<void> {
-        const newUser = new User();
+  async create({
+    name,
+    password,
+    email,
+    driver_license,
+  }: ICreateUserDTO): Promise<void> {
+    const newUser = new User();
 
-        Object.assign(newUser, {
-            name,
-            password,
-            email,
-            driver_license,
-        });
+    Object.assign(newUser, {
+      name,
+      password,
+      email,
+      driver_license,
+    });
 
-        this.users.push(newUser);
-    }
-    async findByEmail(email: string): Promise<User> {
-        const user = this.users.find((user) => user.email === email);
+    this.users.push(newUser);
+  }
+  async findByEmail(email: string): Promise<User> {
+    const user = this.users.find((user) => user.email === email);
 
-        return user;
-    }
-    async findById(id: string): Promise<User> {
-        const user = this.users.find((user) => user.id === id);
+    return user;
+  }
+  async findById(id: string): Promise<User> {
+    const user = this.users.find((user) => user.id === id);
 
-        return user;
-    }
+    return user;
+  }
 }
 
 export { UserRepositoryInMemory };
