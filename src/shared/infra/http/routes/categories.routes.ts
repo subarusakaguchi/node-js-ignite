@@ -32,6 +32,6 @@ categoriesRoutes.post(
   importCategoryController.handle
 );
 
-categoriesRoutes.get("/available", listCategoriesController.handle);
+categoriesRoutes.get("/", listCategoriesController.handle);
 
 export { categoriesRoutes };
