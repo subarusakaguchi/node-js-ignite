@@ -19,7 +19,7 @@ class DevolutionRentalUseCase {
     @inject("CarsRepository")
     private carsRepository: ICarsRepository,
     @inject("DayjsDateProvider")
-    private dayjsDateProvider: IDateProvider
+    private dateProvider: IDateProvider
   ) {}
   async execute({
     id,
@@ -33,9 +33,9 @@ class DevolutionRentalUseCase {
       throw new AppError("Rental not found", 404);
     }
 
-    const dateNow = this.dayjsDateProvider.dateNow();
+    const dateNow = this.dateProvider.dateNow();
 
-    let daily: number = this.dayjsDateProvider.compareInDays(
+    let daily: number = this.dateProvider.compareInDays(
       rental.start_date,
       dateNow
     );
@@ -44,10 +44,7 @@ class DevolutionRentalUseCase {
       daily = minDays;
     }
 
-    const delay = this.dayjsDateProvider.compareInDays(
-      dateNow,
-      rental.start_date
-    );
+    const delay = this.dateProvider.compareInDays(dateNow, rental.start_date);
 
     let total: number;
     if (delay > 0) {

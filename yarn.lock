@@ -794,6 +794,13 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.35.tgz"
   integrity sha512-vu1SrqBjbbZ3J6vwY17jBs8Sr/BKA+/a/WtjRG+whKg1iuLFOosq872EXS0eXWILdO36DHQQeku/ZcL6hz2fpg==
 
+"@types/nodemailer@^6.4.4":
+  version "6.4.4"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.4.tgz#c265f7e7a51df587597b3a49a023acaf0c741f4b"
+  integrity sha512-Ksw4t7iliXeYGvIQcSIgWQ5BLuC/mljIEbjf615svhZL10PE9t+ei8O9gDaD3FPCasUJn9KTLwz2JFJyiiyuqw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/prettier@^2.1.5":
   version "2.6.3"
   resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.6.3.tgz"
@@ -3290,6 +3297,11 @@ node-releases@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/node-releases/-/node-releases-2.0.5.tgz"
   integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
+
+nodemailer@^6.7.6:
+  version "6.7.6"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.7.6.tgz#d3de8f644eaa0dad784d1be1375c596de492f3fc"
+  integrity sha512-/6KF/umU7r7X21Y648/yiRLrgkfz0dmpyuo4BfgYWIpnT/jCbkPTvegMfxCsDAu+O810p2L1BGXieMTPp3nJVA==
 
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"

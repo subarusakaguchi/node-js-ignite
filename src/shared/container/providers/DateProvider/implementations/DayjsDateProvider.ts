@@ -25,6 +25,18 @@ class DayjsDateProvider implements IDateProvider {
   dateNow(): Date {
     return dayjs().toDate();
   }
+
+  addDays(days: number): Date {
+    const date = dayjs().add(days, "days").toDate();
+
+    return date;
+  }
+
+  addHours(hours: number): Date {
+    const date = dayjs().add(hours, "hours").toDate();
+
+    return date;
+  }
 }
 
 export { DayjsDateProvider };

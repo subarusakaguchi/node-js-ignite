@@ -2,6 +2,9 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
+import auth from "@config/auth";
+import { IUserTokensRepository } from "@modules/accounts/repositories/IUserTokensRepository";
+import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { AppError } from "@shared/errors/AppError";
 
 import { IUserRepository } from "../../repositories/IUserRepository";
@@ -17,19 +20,32 @@ interface IResponseAuthenticateUserUseCase {
     email: string;
   };
   token: string;
+  refresh_token: string;
 }
 
 @injectable()
 class AuthenticateUserUseCase {
   constructor(
     @inject("UserRepository")
-    private userRepository: IUserRepository
+    private userRepository: IUserRepository,
+    @inject("UserTokensRepository")
+    private userTokensRepository: IUserTokensRepository,
+    @inject("DayjsDateProvider")
+    private dateProvider: IDateProvider
   ) {}
 
   async execute({
     email,
     password,
   }: IRequestAuthenticateUserUseCase): Promise<IResponseAuthenticateUserUseCase> {
+    const {
+      secret_token,
+      secret_refresh_token,
+      expires_in_token,
+      expires_in_refresh_token,
+      expires_refresh_token_days,
+    } = auth;
+
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
@@ -42,9 +58,22 @@ class AuthenticateUserUseCase {
       throw new AppError("Email or Password incorrect!");
     }
 
-    const token = sign({}, "1825f88495687c598740ef37ee167721", {
+    const token = sign({}, secret_token, {
       subject: user.id,
-      expiresIn: "1 day",
+      expiresIn: expires_in_token,
+    });
+
+    const refresh_token = sign({ email }, secret_refresh_token, {
+      subject: user.id,
+      expiresIn: expires_in_refresh_token,
+    });
+
+    const expires_date = this.dateProvider.addDays(expires_refresh_token_days);
+
+    await this.userTokensRepository.create({
+      expires_date,
+      user_id: user.id,
+      refresh_token,
     });
 
     const tokenReturn: IResponseAuthenticateUserUseCase = {
@@ -53,6 +82,7 @@ class AuthenticateUserUseCase {
         email: user.email,
       },
       token,
+      refresh_token,
     };
 
     return tokenReturn;

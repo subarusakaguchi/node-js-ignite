@@ -19,7 +19,7 @@ class CreateRentalUseCase {
     @inject("RentalsRepository")
     private rentalsRepository: IRentalsRepository,
     @inject("DayjsDateProvider")
-    private dayjsDateProvider: IDateProvider,
+    private dateProvider: IDateProvider,
     @inject("CarsRepository")
     private carsRepository: ICarsRepository
   ) {}
@@ -30,13 +30,6 @@ class CreateRentalUseCase {
   }: ICreateRentalUseCaseRequest): Promise<Rental> {
     const minHours = 24;
 
-    const rentalExistsForUser =
-      await this.rentalsRepository.findOpenRentalByUser(user_id);
-
-    if (rentalExistsForUser) {
-      throw new AppError("There is another Rental for this user");
-    }
-
     const rentalExistsForCar = await this.rentalsRepository.findOpenRentalByCar(
       car_id
     );
@@ -45,9 +38,16 @@ class CreateRentalUseCase {
       throw new AppError("This car is already rented");
     }
 
-    const dateNow = this.dayjsDateProvider.dateNow();
+    const rentalExistsForUser =
+      await this.rentalsRepository.findOpenRentalByUser(user_id);
 
-    const compare = this.dayjsDateProvider.compareInHours(
+    if (rentalExistsForUser) {
+      throw new AppError("There is another Rental for this user");
+    }
+
+    const dateNow = this.dateProvider.dateNow();
+
+    const compare = this.dateProvider.compareInHours(
       dateNow,
       expected_return_date
     );

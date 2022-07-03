@@ -144,6 +144,48 @@
         }
     }
     },
+    "/cars/images/{id}": {
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Add car images",
+        "description": "Add car images to a specific car, it does need authentication and admin permissions",
+        "security": [
+          {"Bearer": []}
+        ],
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "images",
+            "description": "Images to upload",
+            "type": "array",
+            "items": {
+              "type": "file",
+              "items": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Car id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/session": {
       "post": {
         "tags": ["Session"],
