@@ -1,7 +1,8 @@
 interface IMailProviderDTO {
   to: string;
   subject: string;
-  body: string;
+  variables: any;
+  path: string;
 }
 
 export { IMailProviderDTO };
