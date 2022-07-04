@@ -1,7 +1,10 @@
 interface IMailProviderDTO {
   to: string;
   subject: string;
-  variables: any;
+  variables: {
+    name: string;
+    link: string;
+  };
   path: string;
 }
 

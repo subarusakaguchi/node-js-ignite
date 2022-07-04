@@ -5,43 +5,43 @@ import { IUserRepository } from "../../../repositories/IUserRepository";
 import { User } from "../entities/User";
 
 class UserRepository implements IUserRepository {
-    private repository: Repository<User>;
+  private repository: Repository<User>;
 
-    constructor() {
-        this.repository = getRepository(User);
-    }
+  constructor() {
+    this.repository = getRepository(User);
+  }
 
-    async create({
-        id,
-        name,
-        email,
-        password,
-        driver_license,
-        avatar,
-    }: ICreateUserDTO): Promise<void> {
-        const newUser = this.repository.create({
-            id,
-            name,
-            password,
-            email,
-            driver_license,
-            avatar,
-        });
+  async create({
+    id,
+    name,
+    email,
+    password,
+    driver_license,
+    avatar,
+  }: ICreateUserDTO): Promise<void> {
+    const newUser = this.repository.create({
+      id,
+      name,
+      password,
+      email,
+      driver_license,
+      avatar,
+    });
 
-        await this.repository.save(newUser);
-    }
+    await this.repository.save(newUser);
+  }
 
-    async findByEmail(email: string): Promise<User> {
-        const user = await this.repository.findOne({ email });
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.repository.findOne({ email });
 
-        return user;
-    }
+    return user;
+  }
 
-    async findById(id: string): Promise<User> {
-        const user = await this.repository.findOne({ id });
+  async findById(id: string): Promise<User> {
+    const user = await this.repository.findOne({ id });
 
-        return user;
-    }
+    return user;
+  }
 }
 
 export { UserRepository };

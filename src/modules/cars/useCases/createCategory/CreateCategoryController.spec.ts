@@ -29,9 +29,9 @@ describe("Create Category Controller", () => {
       .post("/session")
       .send({ email, password: passwordGlobal });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
-    globalToken = token;
+    globalToken = refresh_token;
   });
 
   afterAll(async () => {
