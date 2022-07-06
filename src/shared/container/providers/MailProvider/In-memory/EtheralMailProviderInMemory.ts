@@ -1,4 +1,4 @@
-import { IMailProviderDTO } from "../../dtos/IMailProviderDTO";
+import { IMailProviderDTO } from "../IMailProviderDTO";
 import { IMailProvider } from "../IMailProvider";
 
 class EtheralMailProviderInMemory implements IMailProvider {

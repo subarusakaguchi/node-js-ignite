@@ -1,4 +1,4 @@
-import { IMailProviderDTO } from "../dtos/IMailProviderDTO";
+import { IMailProviderDTO } from "./IMailProviderDTO";
 
 interface IMailProvider {
   sendMail(data: IMailProviderDTO): Promise<void>;

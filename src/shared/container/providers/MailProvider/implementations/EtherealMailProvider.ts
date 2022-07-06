@@ -2,7 +2,7 @@ import fs from "fs";
 import handlebars from "handlebars";
 import nodemailer, { Transporter } from "nodemailer";
 
-import { IMailProviderDTO } from "../../dtos/IMailProviderDTO";
+import { IMailProviderDTO } from "../IMailProviderDTO";
 import { IMailProvider } from "../IMailProvider";
 
 class EtherealMailProvider implements IMailProvider {

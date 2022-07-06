@@ -13,7 +13,7 @@ const createCategoryController = new CreateCategoryController();
 const importCategoryController = new ImportCategoriesController();
 const listCategoriesController = new ListCategoriesController();
 
-const uploadCategories = multer(uploadConfig.upload("./temp/categories"));
+const uploadCategories = multer(uploadConfig);
 
 const categoriesRoutes = Router();
 
