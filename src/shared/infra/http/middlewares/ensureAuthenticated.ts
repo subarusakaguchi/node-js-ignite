@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
 import auth from "@config/auth";
-import { UserTokensRepository } from "@modules/accounts/infra/typeorm/repositories/UserTokensRepository";
 import { AppError } from "@shared/errors/AppError";
 
 interface IPayloadToken {
@@ -16,7 +15,7 @@ export async function ensureAuthenticated(
 ): Promise<void> {
   const authToken = req.headers.authorization;
 
-  const { secret_token } = auth;
+  const { secret_refresh_token } = auth;
 
   if (!authToken) {
     throw new AppError("Token is missing!", 401);
@@ -25,7 +24,10 @@ export async function ensureAuthenticated(
   const [, token] = authToken.split(" ");
 
   try {
-    const { sub: user_id } = verify(token, secret_token) as IPayloadToken;
+    const { sub: user_id } = verify(
+      token,
+      secret_refresh_token
+    ) as IPayloadToken;
 
     req.user = {
       id: user_id,

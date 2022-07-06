@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>44/44</span>
+                <span class='fraction'>20/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>44/44</span>
+                <span class='fraction'>20/44</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -123,31 +123,31 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -166,32 +166,32 @@ interface ICreateCarSpecificationUseCaseRequest {
 &nbsp;
 @injectable()
 class CreateCarSpecificationUseCase {
-  constructor(
-    @inject("CarsRepository")
-    private carsRepository: ICarsRepository,
-    @inject("SpecificationRepository")
-    private specificationRepository: ISpecificationRepository
-  ) {}
-  async execute({
-    car_id,
-    specification_ids,
-  }: ICreateCarSpecificationUseCaseRequest): Promise&lt;Car&gt; {
-    const carExists = await this.carsRepository.findById(car_id);
-&nbsp;
-    if (!carExists) {
-      throw new AppError("Car not found");
-    }
-&nbsp;
-    const specifications = await this.specificationRepository.findByIds(
-      specification_ids
-    );
-&nbsp;
-    carExists.specifications = specifications;
-&nbsp;
-    const updatedCar = await this.carsRepository.create(carExists);
-&nbsp;
-    return updatedCar;
-  }
+<span class="fstat-no" title="function not covered" >  constructor(</span>
+<span class="cstat-no" title="statement not covered" >    @inject("CarsRepository")</span>
+<span class="cstat-no" title="statement not covered" >    private carsRepository: ICarsRepository,</span>
+<span class="cstat-no" title="statement not covered" >    @inject("SpecificationRepository")</span>
+<span class="cstat-no" title="statement not covered" >    private specificationRepository: ISpecificationRepository</span>
+<span class="cstat-no" title="statement not covered" >  ) {}</span>
+  async <span class="fstat-no" title="function not covered" >execute({</span>
+<span class="cstat-no" title="statement not covered" >    car_id,</span>
+<span class="cstat-no" title="statement not covered" >    specification_ids,</span>
+<span class="cstat-no" title="statement not covered" >  }: ICreateCarSpecificationUseCaseRequest): Promise&lt;Car&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    const carExists = await this.carsRepository.findById(car_id);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    if (!carExists) {</span>
+<span class="cstat-no" title="statement not covered" >      throw new AppError("Car not found");</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const specifications = await this.specificationRepository.findByIds(</span>
+<span class="cstat-no" title="statement not covered" >      specification_ids</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    carExists.specifications = specifications;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    const updatedCar = await this.carsRepository.create(carExists);</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    return updatedCar;</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 }
 &nbsp;
 export { CreateCarSpecificationUseCase };
@@ -202,7 +202,7 @@ export { CreateCarSpecificationUseCase };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jul 04 2022 11:12:07 GMT-0300 (Horário Padrão de Brasília)
+                at Wed Jul 06 2022 09:23:41 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

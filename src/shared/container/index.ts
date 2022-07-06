@@ -1,4 +1,4 @@
-import { container } from "tsyringe";
+import { container, delay } from "tsyringe";
 
 import "@shared/container/providers";
 
@@ -27,7 +27,10 @@ container.registerSingleton<ISpecificationRepository>(
   SpecificationRepository
 );
 
-container.registerSingleton<IUserRepository>("UserRepository", UserRepository);
+container.registerSingleton<IUserRepository>(
+  "UserRepository",
+  delay(() => UserRepository)
+);
 
 container.registerSingleton<IUserTokensRepository>(
   "UserTokensRepository",
