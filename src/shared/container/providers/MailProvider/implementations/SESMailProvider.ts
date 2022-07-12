@@ -1,3 +1,4 @@
+import { SES } from "aws-sdk";
 import fs from "fs";
 import handlebars from "handlebars";
 import nodemailer, { Transporter } from "nodemailer";
@@ -7,26 +8,16 @@ import { IMailProvider } from "../IMailProvider";
 import { IMailProviderDTO } from "../IMailProviderDTO";
 
 @injectable()
-class EtherealMailProvider implements IMailProvider {
+class SESMailProvider implements IMailProvider {
   private client: Transporter;
 
   constructor() {
-    nodemailer
-      .createTestAccount()
-      .then((acc) => {
-        const tranporter = nodemailer.createTransport({
-          host: acc.smtp.host,
-          port: acc.smtp.port,
-          secure: acc.smtp.secure,
-          auth: {
-            user: acc.user,
-            pass: acc.pass,
-          },
-        });
-
-        this.client = tranporter;
-      })
-      .catch((error) => console.log(error));
+    this.client = nodemailer.createTransport({
+      SES: new SES({
+        apiVersion: "2010-12-01",
+        region: process.env.AWS_REGION,
+      }),
+    });
   }
 
   async sendMail({
@@ -54,4 +45,4 @@ class EtherealMailProvider implements IMailProvider {
   }
 }
 
-export { EtherealMailProvider };
+export { SESMailProvider };
